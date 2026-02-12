@@ -24,6 +24,13 @@ Route::get('/subscription/checkout', [SubscriptionController::class, 'showChecko
 Route::post('/subscription/checkout', [SubscriptionController::class, 'checkout'])->name('subscription.checkout.process');
 Route::get('/subscription/success', [SubscriptionController::class, 'success'])->name('subscription.success');
 
+// LVR Submission Routes (after payment)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/subscription/lvr-form', [SubscriptionController::class, 'showLvrForm'])->name('subscription.lvr.form');
+    Route::post('/subscription/lvr-submit', [SubscriptionController::class, 'submitLvr'])->name('subscription.lvr.submit');
+    Route::get('/subscription/complete', [SubscriptionController::class, 'successComplete'])->name('subscription.success.complete');
+});
+
 // Stripe Webhook
 Route::post('/stripe/webhook', [SubscriptionController::class, 'webhook'])->name('cashier.webhook');
 
@@ -46,8 +53,13 @@ Route::middleware([
         // Refresh subscription status from database to catch recent payments
         $user->refresh();
         
-        // If user has active subscription, show member dashboard
+        // If user has active subscription, check LVR submission
         if ($user->subscribed('default')) {
+            // Check if LVR has been submitted
+            if (!$user->lvr_submitted) {
+                return redirect()->route('subscription.lvr.form')->with('warning', 'Please complete your LVR submission to access the dashboard.');
+            }
+            
             // Clear recent payment flag if exists
             session()->forget(['recent_payment', 'payment_time']);
             return view('member-dashboard');
@@ -57,14 +69,20 @@ Route::middleware([
         if (session('recent_payment') && session('payment_time')) {
             $paymentTime = session('payment_time');
             if (now()->diffInMinutes($paymentTime) < 10) {
-                // In test mode, allow access to dashboard even without webhook
+                // In test mode, check LVR submission
+                if (!$user->lvr_submitted) {
+                    return redirect()->route('subscription.lvr.form')->with('info', 'Please complete your LVR submission.');
+                }
                 return view('member-dashboard')->with('info', 'Test mode: Your subscription is being processed.');
             }
         }
         
         // Check if user has a stripe_id (payment was initiated) - allow for testing
         if ($user->stripe_id && !$user->subscribed('default')) {
-            // Payment may be processing - allow access in test mode
+            // Payment may be processing - check LVR
+            if (!$user->lvr_submitted) {
+                return redirect()->route('subscription.lvr.form')->with('info', 'Please complete your LVR submission.');
+            }
             return view('member-dashboard')->with('info', 'Test mode: Your payment is being processed.');
         }
         

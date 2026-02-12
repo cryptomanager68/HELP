@@ -122,7 +122,6 @@ class SubscriptionController extends Controller
                     }
                 } catch (\Exception $e) {
                     \Log::error('Stripe session retrieval failed: ' . $e->getMessage());
-                    // Continue anyway - user might already be logged in
                 }
             }
         }
@@ -130,29 +129,88 @@ class SubscriptionController extends Controller
         $user = Auth::user();
         
         if ($user) {
-            // Store a session flag indicating recent payment
-            session(['recent_payment' => true, 'payment_time' => now()]);
-            
-            // Try to send welcome email - but don't fail if it doesn't work
-            try {
-                \Illuminate\Support\Facades\Mail::send('emails.welcome', [
-                    'user' => $user,
-                    'resetUrl' => \Illuminate\Support\Facades\Password::createToken($user)
-                ], function ($message) use ($user) {
-                    $message->to($user->email)
-                            ->subject('Welcome to HELP - Your Account is Ready!');
-                });
-                
-                // Also try to send password reset link
-                \Illuminate\Support\Facades\Password::sendResetLink(
-                    ['email' => $user->email]
-                );
-            } catch (\Exception $e) {
-                // Log the error but don't fail the request
-                \Log::error('Failed to send welcome email: ' . $e->getMessage());
+            // Check if LVR already submitted
+            if ($user->lvr_submitted) {
+                // Already submitted, go to dashboard
+                return redirect()->route('dashboard')->with('success', 'Welcome back! Your subscription is active.');
             }
+            
+            // Redirect to LVR form - MANDATORY
+            return redirect()->route('subscription.lvr.form')->with('info', 'Please complete your LVR submission to activate your account.');
         }
         
+        return view('subscription.success');
+    }
+
+    /**
+     * Show LVR submission form
+     */
+    public function showLvrForm()
+    {
+        $user = Auth::user();
+        
+        // Check if already submitted
+        if ($user && $user->lvr_submitted) {
+            return redirect()->route('dashboard')->with('info', 'You have already submitted your LVR.');
+        }
+        
+        return view('subscription.lvr-form');
+    }
+
+    /**
+     * Handle LVR submission
+     */
+    public function submitLvr(Request $request)
+    {
+        $request->validate([
+            'number_of_properties' => 'required|integer|min:1',
+            'total_mortgage' => 'required|numeric|min:0',
+            'total_valuation' => 'required|numeric|min:0',
+        ]);
+
+        $user = Auth::user();
+        
+        // Calculate LVR
+        $lvr = 0;
+        if ($request->total_valuation > 0) {
+            $lvr = ($request->total_mortgage / $request->total_valuation) * 100;
+        }
+
+        // Update user with LVR data
+        $user->update([
+            'number_of_properties' => $request->number_of_properties,
+            'total_mortgage' => $request->total_mortgage,
+            'total_valuation' => $request->total_valuation,
+            'lvr_percentage' => $lvr,
+            'lvr_submitted' => true,
+            'lvr_submitted_at' => now(),
+        ]);
+
+        // Generate password reset token
+        $token = \Illuminate\Support\Facades\Password::createToken($user);
+        $resetUrl = url(route('password.reset', ['token' => $token, 'email' => $user->email], false));
+
+        // Send welcome email with password reset link
+        try {
+            \Illuminate\Support\Facades\Mail::send('emails.welcome', [
+                'user' => $user,
+                'resetUrl' => $resetUrl
+            ], function ($message) use ($user) {
+                $message->to($user->email)
+                        ->subject('Welcome to HELP - Set Your Password');
+            });
+        } catch (\Exception $e) {
+            \Log::error('Failed to send welcome email: ' . $e->getMessage());
+        }
+
+        return redirect()->route('subscription.success.complete')->with('success', 'LVR submitted successfully! Check your email to set your password.');
+    }
+
+    /**
+     * Show final success page after LVR submission
+     */
+    public function successComplete()
+    {
         return view('subscription.success');
     }
 

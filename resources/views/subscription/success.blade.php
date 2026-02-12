@@ -24,21 +24,24 @@
             </p>
             
             <div class="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 mb-6">
-                <h2 class="font-bold text-blue-900 mb-3 text-lg">📧 You'll Receive 2 Emails:</h2>
+                <h2 class="font-bold text-blue-900 mb-3 text-lg">📧 Check Your Email Now!</h2>
                 <div class="space-y-3 text-left">
-                    <div class="bg-white p-4 rounded-lg">
-                        <p class="font-bold text-blue-900 mb-1">1. Welcome Email</p>
-                        <p class="text-blue-800 text-sm">Contains your account information and login email: 
+                    <div class="bg-white p-4 rounded-lg border-2 border-red-500">
+                        <p class="font-bold text-red-900 mb-1 flex items-center gap-2">
+                            <span class="text-2xl">🔑</span>
+                            1. Set Your Password Email
+                        </p>
+                        <p class="text-blue-800 text-sm">
+                            <strong class="text-red-600">IMPORTANT:</strong> Click the big red "Set Your Password Now" button in the email to create your password.
+                        </p>
+                        <p class="text-xs text-gray-600 mt-2">
+                            Login email: 
                             @auth
-                                <strong>{{ auth()->user()->email }}</strong>
+                                <strong class="text-blue-900">{{ auth()->user()->email }}</strong>
                             @else
-                                <strong>(Please log in)</strong>
+                                <strong>(Please check your inbox)</strong>
                             @endauth
                         </p>
-                    </div>
-                    <div class="bg-white p-4 rounded-lg">
-                        <p class="font-bold text-blue-900 mb-1">2. Password Reset Email</p>
-                        <p class="text-blue-800 text-sm">Click the link to set your own secure password</p>
                     </div>
                 </div>
             </div>
@@ -47,20 +50,24 @@
                 <h2 class="font-bold text-gray-900 mb-4">What's Next?</h2>
                 <div class="space-y-3 text-left">
                     <div class="flex items-start gap-3">
-                        <span class="text-green-600 font-bold">1.</span>
-                        <p class="text-gray-700">Set your password using the email link</p>
+                        <span class="text-red-600 font-bold text-xl">1.</span>
+                        <p class="text-gray-700"><strong>Check your email inbox</strong> for the welcome email</p>
                     </div>
                     <div class="flex items-start gap-3">
-                        <span class="text-green-600 font-bold">2.</span>
-                        <p class="text-gray-700">Access your member dashboard</p>
+                        <span class="text-red-600 font-bold text-xl">2.</span>
+                        <p class="text-gray-700"><strong>Click the red "Set Your Password Now" button</strong> in the email</p>
                     </div>
                     <div class="flex items-start gap-3">
                         <span class="text-green-600 font-bold">3.</span>
-                        <p class="text-gray-700">Review the three equity pathways</p>
+                        <p class="text-gray-700">Create your secure password</p>
                     </div>
                     <div class="flex items-start gap-3">
                         <span class="text-green-600 font-bold">4.</span>
-                        <p class="text-gray-700">Contact the strategy team when ready</p>
+                        <p class="text-gray-700">Login and access your member dashboard</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <span class="text-green-600 font-bold">5.</span>
+                        <p class="text-gray-700">Review the three equity pathways</p>
                     </div>
                 </div>
             </div>
@@ -69,6 +76,17 @@
                 <a href="{{ route('dashboard') }}" class="inline-block px-8 py-4 bg-green-600 text-white rounded-xl font-bold text-lg hover:bg-green-700 transition-colors shadow-lg">
                     Enter Dashboard
                 </a>
+                
+                <div class="mt-6">
+                    <p class="text-sm text-gray-600 mb-3">Didn't receive the password reset email?</p>
+                    <form action="{{ route('password.email') }}" method="POST" class="inline">
+                        @csrf
+                        <input type="hidden" name="email" value="{{ auth()->user()->email }}">
+                        <button type="submit" class="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                            Resend Password Reset Email
+                        </button>
+                    </form>
+                </div>
             @else
                 <a href="{{ route('login') }}" class="inline-block px-8 py-4 bg-green-600 text-white rounded-xl font-bold text-lg hover:bg-green-700 transition-colors shadow-lg">
                     Login to Continue

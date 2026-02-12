@@ -1,12 +1,19 @@
-{{-- Portfolio Metrics Component with Stunning Design --}}
+{{-- Portfolio Metrics Component - Example Only for Public Page --}}
 <div class="w-full max-w-6xl mx-auto space-y-8 relative">
     
     {{-- Animated Background Elements --}}
     <div class="absolute inset-0 overflow-hidden pointer-events-none -z-10">
-        {{-- Floating Gradient Orbs --}}
         <div class="absolute top-20 -left-20 w-72 h-72 bg-gradient-to-br from-emerald-400/30 to-teal-500/30 rounded-full blur-3xl animate-float-slow"></div>
         <div class="absolute bottom-40 -right-20 w-96 h-96 bg-gradient-to-br from-blue-400/30 to-indigo-500/30 rounded-full blur-3xl animate-float-slower"></div>
         <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
+    </div>
+    
+    {{-- Example Label Banner --}}
+    <div class="relative">
+        <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-center py-3 px-6 rounded-2xl shadow-lg">
+            <p class="font-bold text-lg">📊 Example LVR Summary – For Illustration Purposes Only</p>
+            <p class="text-sm text-white/90 mt-1">After subscription, you'll submit your actual portfolio data</p>
+        </div>
     </div>
     
     {{-- Portfolio Overview Card with Glassmorphism --}}
@@ -46,13 +53,13 @@
                         </h3>
                     </div>
                     <div class="relative group/badge">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full blur opacity-50 group-hover/badge:opacity-75 transition-opacity"></div>
-                        <div class="relative px-5 py-2 bg-gradient-to-r from-emerald-500 to-teal-500 text-white text-sm font-bold rounded-full shadow-lg shadow-emerald-500/30 animate-pulse-subtle flex items-center gap-2">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-amber-500 to-orange-500 rounded-full blur opacity-50 group-hover/badge:opacity-75 transition-opacity"></div>
+                        <div class="relative px-5 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-sm font-bold rounded-full shadow-lg shadow-amber-500/30 animate-pulse-subtle flex items-center gap-2">
                             <span class="relative flex h-2 w-2">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
                             </span>
-                            Live Metrics
+                            Example Data
                         </div>
                     </div>
                 </div>
@@ -187,137 +194,6 @@
                         </div>
                     </div>
                     
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    {{-- LVR Calculation Card with Premium Design --}}
-    <div class="relative group">
-        <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-3xl blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-700"></div>
-        
-        <div class="relative bg-gradient-to-br from-indigo-50/90 via-white/90 to-purple-50/90 backdrop-blur-2xl rounded-3xl border border-indigo-200/50 shadow-2xl overflow-hidden">
-            {{-- Background Image --}}
-            <div class="absolute inset-0 opacity-5">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1920&q=80" alt="Background" class="w-full h-full object-cover">
-            </div>
-            
-            {{-- Animated Gradient Overlay --}}
-            <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-purple-500/5 to-pink-500/5 animate-gradient-shift"></div>
-            
-            <div class="relative p-10">
-                {{-- Header --}}
-                <div class="flex items-center justify-between mb-8">
-                    <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/30 animate-bounce-subtle">
-                            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 class="text-3xl md:text-4xl font-black tracking-tight mb-1">
-                                <span class="bg-gradient-to-r from-indigo-900 via-purple-800 to-indigo-900 bg-clip-text text-transparent animate-gradient-text">
-                                    LVR
-                                </span>
-                                <span class="bg-gradient-to-r from-purple-600 via-pink-600 to-purple-600 bg-clip-text text-transparent animate-gradient-text ml-2">
-                                    Calculation
-                                </span>
-                            </h3>
-                            <p class="text-sm text-indigo-600 font-bold flex items-center gap-2">
-                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                </svg>
-                                Detailed Formula Breakdown
-                            </p>
-                        </div>
-                    </div>
-                    <button class="relative group/btn">
-                        <div class="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-full blur opacity-50 group-hover/btn:opacity-75 transition-opacity"></div>
-                        <div class="relative px-5 py-2 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-bold rounded-full shadow-lg shadow-indigo-500/30 hover:shadow-xl hover:scale-105 transition-all flex items-center gap-2">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
-                            </svg>
-                            Copy Formula
-                        </div>
-                    </button>
-                </div>
-                
-                {{-- Formula Display --}}
-                <div class="bg-white/80 backdrop-blur-sm rounded-2xl p-8 border border-indigo-100 shadow-lg">
-                    <div class="mb-6">
-                        <h4 class="font-bold text-indigo-900 text-xl mb-2">Loan-to-Value Ratio (LVR)</h4>
-                        <p class="text-slate-600 text-sm">Understanding your leverage position</p>
-                    </div>
-                    
-                    {{-- Formula Steps --}}
-                    <div class="space-y-5 font-mono">
-                        {{-- Formula Definition --}}
-                        <div class="relative overflow-hidden bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-5 border-2 border-indigo-200">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-200/30 rounded-full blur-2xl"></div>
-                            <div class="relative">
-                                <div class="text-indigo-700 text-sm font-bold mb-2">Formula:</div>
-                                <div class="text-xl font-bold text-indigo-900">
-                                    LVR = (Total Mortgage ÷ Total Valuation) × 100
-                                </div>
-                            </div>
-                        </div>
-                        
-                        {{-- Calculation Steps --}}
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-4 group/step">
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg group-hover/step:scale-110 transition-transform">
-                                    <span class="text-white font-bold">1</span>
-                                </div>
-                                <div class="flex-1 bg-slate-50 rounded-xl p-4 border border-slate-200 hover:border-indigo-300 hover:shadow-md transition-all">
-                                    <div class="text-slate-600 text-sm mb-1">Substitute values:</div>
-                                    <div class="text-slate-900 font-semibold text-lg">
-                                        LVR = ($2,250,000 ÷ $8,100,000) × 100
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center gap-4 group/step">
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center flex-shrink-0 shadow-lg group-hover/step:scale-110 transition-transform">
-                                    <span class="text-white font-bold">2</span>
-                                </div>
-                                <div class="flex-1 bg-slate-50 rounded-xl p-4 border border-slate-200 hover:border-indigo-300 hover:shadow-md transition-all">
-                                    <div class="text-slate-600 text-sm mb-1">Calculate division:</div>
-                                    <div class="text-slate-900 font-semibold text-lg">
-                                        LVR = 0.2778 × 100
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-center gap-4 group/step">
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-500 to-teal-600 flex items-center justify-center flex-shrink-0 shadow-lg group-hover/step:scale-110 transition-transform">
-                                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                </div>
-                                <div class="flex-1 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-4 border-2 border-emerald-200 shadow-lg">
-                                    <div class="text-emerald-700 text-sm font-bold mb-1">Final Result:</div>
-                                    <div class="text-emerald-900 font-bold text-2xl">
-                                        LVR = 27.8%
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    {{-- Info Banner --}}
-                    <div class="mt-8 bg-gradient-to-r from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl p-5 shadow-sm">
-                        <div class="flex items-start gap-4">
-                            <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0 shadow-lg">
-                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                </svg>
-                            </div>
-                            <div class="text-sm text-blue-900">
-                                <p class="font-bold mb-2 text-base">What does this mean?</p>
-                                <p class="text-blue-800 leading-relaxed">An LVR of 27.8% indicates a strong equity position with low leverage. This provides flexibility for future investment strategies and demonstrates healthy portfolio management.</p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

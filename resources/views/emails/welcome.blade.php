@@ -141,20 +141,37 @@
         </div>
 
         <div class="warning">
-            <strong>⚠️ Set Your Password</strong>
-            <p style="margin: 10px 0 0 0;">You'll receive a separate email with a password reset link. Click that link to set your own secure password.</p>
+            <strong>🔐 IMPORTANT: Set Your Password Now</strong>
+            <p style="margin: 10px 0 0 0;">Click the button below to create your secure password. This link will expire in 60 minutes.</p>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="{{ $resetUrl }}" class="button" style="background-color: #dc2626; font-size: 18px; padding: 18px 40px;">
+                🔑 Set Your Password Now
+            </a>
+        </div>
+
+        <div class="info-box" style="background-color: #fef3c7; border-left-color: #f59e0b;">
+            <h3 style="color: #92400e;">Password Reset Link:</h3>
+            <p style="font-size: 12px; word-break: break-all; color: #78350f; font-family: 'Courier New', monospace;">
+                {{ $resetUrl }}
+            </p>
+            <p style="font-size: 12px; color: #92400e; margin-top: 10px;">
+                If the button doesn't work, copy and paste this link into your browser.
+            </p>
         </div>
 
         <div class="steps">
             <h3 style="margin-top: 0; color: #1f2937;">Next Steps:</h3>
-            <div class="step">Check your email for the password reset link</div>
-            <div class="step">Click the link and create your password</div>
+            <div class="step">Click the "Set Your Password Now" button above</div>
+            <div class="step">Create a strong, secure password</div>
             <div class="step">Log in at <a href="{{ url('/login') }}">{{ url('/login') }}</a></div>
             <div class="step">Access your member dashboard</div>
             <div class="step">Review the three equity pathways</div>
         </div>
 
         <div style="text-align: center;">
+            <p style="color: #6b7280; font-size: 14px; margin-bottom: 10px;">After setting your password:</p>
             <a href="{{ url('/login') }}" class="button">Go to Login Page</a>
         </div>
 

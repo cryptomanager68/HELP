@@ -65,7 +65,13 @@ class User extends Authenticatable implements Wallet,HasMedia
         'company_representative_email',
         'company_phone',
         'company_address',
-        'profile_completion_modal_shown'
+        'profile_completion_modal_shown',
+        'number_of_properties',
+        'total_mortgage',
+        'total_valuation',
+        'lvr_percentage',
+        'lvr_submitted',
+        'lvr_submitted_at'
     ];
 
     /**
@@ -87,6 +93,8 @@ class User extends Authenticatable implements Wallet,HasMedia
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'lvr_submitted_at' => 'datetime',
+        'lvr_submitted' => 'boolean',
     ];
 
     /**
