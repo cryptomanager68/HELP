@@ -323,7 +323,7 @@
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <!-- Background Image with Overlay -->
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('landingPage/img/hero-building.jpg') }}" alt="Property Development" class="w-full h-full object-cover">
+            <img src="{{ asset('welcome.jfif') }}" alt="Property Development" class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-gradient-to-br from-secondary-dark/90 via-secondary-dark/80 to-primary-dark/70"></div>
         </div>
         

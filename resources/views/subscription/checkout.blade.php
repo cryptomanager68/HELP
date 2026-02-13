@@ -72,7 +72,7 @@
             <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-8 shadow-2xl">
                 <!-- Pricing -->
                 <div class="text-center mb-8">
-                    <div class="text-5xl font-bold text-white mb-2">$229 <span class="text-2xl text-white/60">AUD</span></div>
+                    <div class="text-5xl font-bold text-white mb-2">$299 <span class="text-2xl text-white/60">AUD</span></div>
                     <p class="text-white/80 text-lg">Annual Strategy Access</p>
                     <p class="text-sm text-white/60 mt-1">Includes GST • Billed annually</p>
                 </div>
