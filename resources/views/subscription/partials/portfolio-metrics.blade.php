@@ -8,11 +8,51 @@
         <div class="absolute top-1/2 left-1/2 w-64 h-64 bg-gradient-to-br from-purple-400/20 to-pink-500/20 rounded-full blur-3xl animate-pulse-slow"></div>
     </div>
     
-    {{-- Example Label Banner --}}
-    <div class="relative">
-        <div class="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-center py-3 px-6 rounded-2xl shadow-lg">
-            <p class="font-bold text-lg">📊 Example LVR Summary – For Illustration Purposes Only</p>
-            <p class="text-sm text-white/90 mt-1">After subscription, you'll submit your actual portfolio data</p>
+    {{-- Modern Example Label Banner --}}
+    <div class="relative group/banner">
+        {{-- Animated Gradient Border --}}
+        <div class="absolute -inset-0.5 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-2xl opacity-75 group-hover/banner:opacity-100 blur transition-all duration-500 animate-gradient-shift" style="background-size: 200% 200%;"></div>
+        
+        <div class="relative bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50 backdrop-blur-xl rounded-2xl border border-white/50 shadow-2xl overflow-hidden">
+            {{-- Subtle Pattern Overlay --}}
+            <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, #6366f1 1px, transparent 1px); background-size: 20px 20px;"></div>
+            
+            {{-- Content --}}
+            <div class="relative px-8 py-5">
+                <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
+                    {{-- Icon with Pulse --}}
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-blue-500 rounded-full blur-xl opacity-50 animate-pulse"></div>
+                        <div class="relative w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    {{-- Text Content --}}
+                    <div class="flex-1">
+                        <p class="font-bold text-xl bg-gradient-to-r from-blue-700 via-purple-700 to-pink-700 bg-clip-text text-transparent mb-1">
+                            📊 Example Portfolio Data – For Illustration Only
+                        </p>
+                        <p class="text-sm text-slate-600 font-medium">
+                            After subscription, you'll submit your actual portfolio information
+                        </p>
+                    </div>
+                    
+                    {{-- Animated Badge --}}
+                    <div class="relative">
+                        <div class="absolute -inset-1 bg-gradient-to-r from-amber-400 to-orange-500 rounded-full blur opacity-75 animate-pulse"></div>
+                        <div class="relative px-4 py-2 bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-bold rounded-full shadow-lg flex items-center gap-2">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                            </span>
+                            DEMO
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     

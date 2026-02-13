@@ -221,4 +221,12 @@ class ExpressionOfInterestResource extends Resource
             'edit' => Pages\EditExpressionOfInterest::route('/{record}/edit'),
         ];
     }
+
+    /**
+     * Allow all authenticated users to access this resource
+     */
+    public static function canAccess(): bool
+    {
+        return true;
+    }
 }

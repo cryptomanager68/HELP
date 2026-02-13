@@ -25,7 +25,13 @@ class Handler extends ExceptionHandler
     { 
         // Handle CSRF token mismatch (419 errors) more gracefully
         $this->renderable(function (\Illuminate\Session\TokenMismatchException $e, $request) {
-            // If it's a logout request, just redirect to home/login without error
+            // If it's a subscription checkout request, redirect back to checkout with fresh token
+            if ($request->is('subscription/*') || $request->routeIs('subscription.*')) {
+                return redirect()->route('subscription.checkout')
+                    ->with('info', 'Your session expired. Please try again.');
+            }
+            
+            // If it's a logout request, just redirect to home without error
             if ($request->is('admin/logout') || 
                 $request->is('admin/auth/logout') || 
                 $request->routeIs('logout') ||
@@ -33,9 +39,9 @@ class Handler extends ExceptionHandler
                 return redirect('/');
             }
             
-            // For other requests, redirect to login
-            return redirect()->route('login')
-                ->with('error', 'Your session has expired. Please log in again.');
+            // For other requests, redirect to home
+            return redirect('/')
+                ->with('info', 'Your session has expired. Please try again.');
         });
         
         $this->reportable(function (Throwable $e) {

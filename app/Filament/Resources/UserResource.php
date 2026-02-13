@@ -126,4 +126,12 @@ class UserResource extends Resource
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
+
+    /**
+     * Allow all authenticated users to access this resource
+     */
+    public static function canAccess(): bool
+    {
+        return true;
+    }
 }

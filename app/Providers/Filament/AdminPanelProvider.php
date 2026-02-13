@@ -34,26 +34,7 @@ class AdminPanelProvider extends PanelProvider
         ->id('admin')
         ->path('admin')
         ->plugins([
-            FilamentShieldPlugin::make()
-                ->gridColumns([
-                    'default' => 1,
-                    'sm' => 2,
-                    'lg' => 2
-                ])
-                ->sectionColumnSpan(1)
-                ->checkboxListColumns([
-                    'default' => 1,
-                    'sm' => 2,
-                    'lg' => 4,
-                ])
-                ->resourceCheckboxListColumns([
-                    'default' => 1,
-                    'sm' => 2,
-                ]),
-                ActivitylogPlugin::make()
-                ->authorize(
-                    fn () => auth()->user()->hasRole('super_admin')
-                ),
+            // All plugins temporarily disabled for testing
         ])
         // ->brandLogo(asset('Logos/logo2.png'))
         // ->brandLogoHeight('4rem')
@@ -73,7 +54,7 @@ class AdminPanelProvider extends PanelProvider
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
-                Pages\Dashboard::class,
+                \App\Filament\Pages\Dashboard::class,
 
             ])
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')

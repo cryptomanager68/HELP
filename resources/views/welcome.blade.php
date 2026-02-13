@@ -295,60 +295,26 @@
     <!-- Header -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-secondary-dark/70 backdrop-blur-md border-b border-white/10">
         <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between py-1.5">
-                <!-- Logo with Modern & Unique Styling -->
+            <div class="flex items-center justify-between py-3">
+                <!-- Logo - Clean and Simple -->
                 <a href="/" class="flex items-center group relative">
-                    <!-- Multi-layer glow effects -->
-                    <div class="absolute -inset-6 bg-gradient-to-r from-primary via-accent to-cyan-400 rounded-full opacity-0 group-hover:opacity-30 blur-3xl transition-all duration-700 animate-pulse"></div>
-                    <div class="absolute -inset-4 bg-gradient-to-br from-accent/40 to-primary/40 rounded-2xl opacity-0 group-hover:opacity-100 blur-2xl transition-opacity duration-500"></div>
-                    
-                    <!-- Animated ring effect -->
-                    <div class="absolute inset-0 rounded-full border-2 border-accent/0 group-hover:border-accent/50 scale-100 group-hover:scale-125 transition-all duration-700 ease-out"></div>
-                    
-                    <!-- Logo with modern effects -->
-                    <div class="relative">
-                        <!-- Reflection effect -->
-                        <div class="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        
-                        <!-- Main logo image -->
-                        <img src="{{ asset('logo.png') }}" alt="HELP Logo" 
-                            class="h-10 relative z-10 transition-all duration-500 ease-out
-                                   group-hover:scale-110 
-                                   drop-shadow-[0_10px_30px_rgba(13,148,136,0.3)]
-                                   group-hover:drop-shadow-[0_15px_50px_rgba(13,148,136,0.6)]
-                                   group-hover:brightness-110
-                                   group-hover:contrast-110
-                                   filter
-                                   group-hover:saturate-125">
-                        
-                        <!-- Animated particles -->
-                        <div class="absolute -top-2 -right-2 w-2 h-2 bg-accent rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping"></div>
-                        <div class="absolute -bottom-2 -left-2 w-2 h-2 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping" style="animation-delay: 0.2s;"></div>
-                        <div class="absolute top-0 -left-3 w-1.5 h-1.5 bg-primary rounded-full opacity-0 group-hover:opacity-100 group-hover:animate-ping" style="animation-delay: 0.4s;"></div>
-                    </div>
-                    
-                    <!-- Floating accent line -->
-                    <div class="absolute -bottom-2 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-accent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    <img src="{{ asset('logo.png') }}" alt="HELP - HomeOwners Equity & Liquidity Plan" 
+                        class="h-20 relative z-10 transition-all duration-300 ease-out group-hover:scale-105 rounded-lg shadow-lg">
                 </a>
                 
                 <!-- Navigation -->
-                <nav class="hidden md:flex items-center gap-8">
-                    <a href="#about" class="text-sm text-white/70 hover:text-accent transition-colors font-medium">About</a>
-                    <a href="#services" class="text-sm text-white/70 hover:text-accent transition-colors font-medium">Services</a>
-                    <a href="#syndicates" class="text-sm text-white/70 hover:text-accent transition-colors font-medium">Syndicates</a>
-                    <a href="#process" class="text-sm text-white/70 hover:text-accent transition-colors font-medium">Process</a>
-                    <a href="#disclaimers" class="text-sm text-white/70 hover:text-accent transition-colors font-medium">Important Info</a>
-                    <a href="{{ route('login') }}" class="px-6 py-2.5 gradient-primary text-white rounded-lg font-semibold text-sm shadow-lg hover:shadow-xl transition-all hover:scale-105">
-                        Member Login
+                <nav class="hidden md:flex items-center gap-10">
+                    <a href="#about" class="text-lg text-white/80 hover:text-accent transition-colors font-semibold">About</a>
+                    <a href="#services" class="text-lg text-white/80 hover:text-accent transition-colors font-semibold">Services</a>
+                    <a href="#syndicates" class="text-lg text-white/80 hover:text-accent transition-colors font-semibold">Syndicates</a>
+                    <a href="#process" class="text-lg text-white/80 hover:text-accent transition-colors font-semibold">Process</a>
+                    <a href="#disclaimers" class="text-lg text-white/80 hover:text-accent transition-colors font-semibold">Important Info</a>
+                    <a href="{{ url('/admin/login') }}" class="px-8 py-3.5 bg-white/10 backdrop-blur-sm border border-white/20 text-white rounded-lg font-bold text-base shadow-lg hover:bg-white/20 transition-all hover:scale-105">
+                        Admin Login
                     </a>
                 </nav>
                 
-                <!-- Mobile Login Button -->
-                <div class="flex md:hidden items-center">
-                    <a href="{{ route('login') }}" class="px-5 py-2.5 gradient-primary text-white rounded-lg font-semibold text-sm shadow-lg hover:shadow-xl transition-all">
-                        Login
-                    </a>
-                </div>
+                <!-- Mobile Menu Button (if needed) -->
             </div>
         </div>
     </header>
@@ -487,28 +453,28 @@
                     {{-- Background Glow Effect --}}
                     <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 blur-3xl opacity-60 animate-pulse-slow"></div>
                     
-                    <h2 class="relative">
-                        {{-- First Line: Clean, Bold, Professional --}}
+                    <h2 class="relative text-center mx-auto max-w-5xl px-4" style="line-height: 1.3;">
+                        {{-- First Line: Brilliant Purple to Pink to Red Gradient --}}
                         <div class="mb-4">
-                            <span class="block text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-slate-900 leading-none" style="font-family: 'Outfit', 'Inter', -apple-system, sans-serif; letter-spacing: -0.04em; font-weight: 900;">
+                            <span class="block text-4xl md:text-5xl lg:text-6xl font-black leading-tight" style="font-family: 'Outfit', 'Inter', -apple-system, sans-serif; letter-spacing: -0.02em; font-weight: 900; background: linear-gradient(135deg, #9333ea 0%, #ec4899 50%, #ef4444 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; padding: 0.15em 0.1em;">
                                 What You'll Get
                             </span>
                         </div>
                         
-                        {{-- Second Line: Gradient with Glow Effect --}}
-                        <div class="relative inline-block">
+                        {{-- Second Line: Brilliant Blue to Cyan to Teal Gradient --}}
+                        <div class="relative inline-block w-full">
                             {{-- Glow Layer --}}
-                            <span class="absolute inset-0 text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black blur-2xl opacity-60 bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text text-transparent" style="font-family: 'Outfit', 'Inter', -apple-system, sans-serif; letter-spacing: -0.04em; font-weight: 900;">
-                                Access To
+                            <span class="absolute inset-0 text-4xl md:text-5xl lg:text-6xl font-black blur-xl opacity-40" style="font-family: 'Outfit', 'Inter', -apple-system, sans-serif; letter-spacing: -0.02em; font-weight: 900; background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #14b8a6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">
+                                Full Access To
                             </span>
                             
-                            {{-- Main Text with Animated Gradient --}}
-                            <span class="relative block text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-black leading-none bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 bg-clip-text text-transparent animate-gradient-flow" style="font-family: 'Outfit', 'Inter', -apple-system, sans-serif; letter-spacing: -0.04em; font-weight: 900; background-size: 200% auto;">
-                                Access To
+                            {{-- Main Text with Brilliant Gradient --}}
+                            <span class="relative block text-4xl md:text-5xl lg:text-6xl font-black leading-tight" style="font-family: 'Outfit', 'Inter', -apple-system, sans-serif; letter-spacing: -0.02em; font-weight: 900; background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #14b8a6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; padding: 0.15em 0.1em 0.25em 0.1em;">
+                                Full Access To
                             </span>
                             
-                            {{-- Animated Underline with Glow --}}
-                            <div class="absolute -bottom-4 left-0 right-0 h-1.5 bg-gradient-to-r from-cyan-500 via-blue-600 to-purple-600 rounded-full shadow-lg shadow-blue-500/50 animate-shimmer-slide" style="background-size: 200% auto;"></div>
+                            {{-- Animated Underline with Gradient Glow --}}
+                            <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-3/4 h-1 rounded-full" style="background: linear-gradient(90deg, #0ea5e9, #06b6d4, #14b8a6); box-shadow: 0 2px 15px rgba(6, 182, 212, 0.4);"></div>
                         </div>
                     </h2>
                     
@@ -798,12 +764,30 @@
                 
                 <div class="bg-white rounded-2xl shadow-2xl p-12 border-2 border-primary/20 hover-lift hover-shine">
                     <div class="grid md:grid-cols-3 gap-8 mb-8">
-                        <div class="relative">
-                            <div class="w-20 h-20 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                                <span class="text-4xl">??</span>
+                        <!-- Pathway A - Modern Rocket Icon -->
+                        <div class="relative group/pathway">
+                            <div class="relative w-24 h-24 mx-auto mb-6 transform transition-all duration-500 group-hover/pathway:scale-110 group-hover/pathway:rotate-3">
+                                <!-- Gradient Background with Glow -->
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 rounded-3xl shadow-2xl shadow-emerald-500/50 group-hover/pathway:shadow-emerald-500/80 transition-all duration-500"></div>
+                                <div class="absolute inset-0 bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-600 rounded-3xl blur-xl opacity-50 group-hover/pathway:opacity-75 transition-opacity duration-500"></div>
+                                
+                                <!-- Icon Container -->
+                                <div class="relative w-full h-full flex items-center justify-center">
+                                    <!-- Rocket Icon -->
+                                    <svg class="w-12 h-12 text-white transform transition-transform duration-500 group-hover/pathway:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                    </svg>
+                                </div>
+                                
+                                <!-- Animated Ring -->
+                                <div class="absolute inset-0 rounded-3xl border-2 border-white/30 group-hover/pathway:scale-110 group-hover/pathway:border-white/50 transition-all duration-500"></div>
+                                
+                                <!-- Sparkle Effects -->
+                                <div class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-300 rounded-full opacity-0 group-hover/pathway:opacity-100 group-hover/pathway:animate-ping"></div>
+                                <div class="absolute -bottom-1 -left-1 w-2 h-2 bg-cyan-300 rounded-full opacity-0 group-hover/pathway:opacity-100 group-hover/pathway:animate-ping" style="animation-delay: 0.2s;"></div>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">Pathway A</h3>
-                            <p class="text-gray-500 text-sm">Direct Equity Strategy</p>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2 text-center">Pathway A</h3>
+                            <p class="text-gray-500 text-sm text-center">Direct Equity Strategy</p>
                             <div class="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-xl flex items-center justify-center">
                                 <svg class="w-12 h-12 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
@@ -811,12 +795,30 @@
                             </div>
                         </div>
 
-                        <div class="relative">
-                            <div class="w-20 h-20 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                                <span class="text-4xl">??</span>
+                        <!-- Pathway B - Modern Network Icon -->
+                        <div class="relative group/pathway">
+                            <div class="relative w-24 h-24 mx-auto mb-6 transform transition-all duration-500 group-hover/pathway:scale-110 group-hover/pathway:-rotate-3">
+                                <!-- Gradient Background with Glow -->
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-400 via-indigo-500 to-purple-600 rounded-3xl shadow-2xl shadow-blue-500/50 group-hover/pathway:shadow-blue-500/80 transition-all duration-500"></div>
+                                <div class="absolute inset-0 bg-gradient-to-br from-blue-400 via-indigo-500 to-purple-600 rounded-3xl blur-xl opacity-50 group-hover/pathway:opacity-75 transition-opacity duration-500"></div>
+                                
+                                <!-- Icon Container -->
+                                <div class="relative w-full h-full flex items-center justify-center">
+                                    <!-- Network/Connection Icon -->
+                                    <svg class="w-12 h-12 text-white transform transition-transform duration-500 group-hover/pathway:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                                    </svg>
+                                </div>
+                                
+                                <!-- Animated Ring -->
+                                <div class="absolute inset-0 rounded-3xl border-2 border-white/30 group-hover/pathway:scale-110 group-hover/pathway:border-white/50 transition-all duration-500"></div>
+                                
+                                <!-- Sparkle Effects -->
+                                <div class="absolute -top-1 -right-1 w-3 h-3 bg-pink-300 rounded-full opacity-0 group-hover/pathway:opacity-100 group-hover/pathway:animate-ping"></div>
+                                <div class="absolute -bottom-1 -left-1 w-2 h-2 bg-blue-300 rounded-full opacity-0 group-hover/pathway:opacity-100 group-hover/pathway:animate-ping" style="animation-delay: 0.2s;"></div>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">Pathway B</h3>
-                            <p class="text-gray-500 text-sm">Syndicate Participation</p>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2 text-center">Pathway B</h3>
+                            <p class="text-gray-500 text-sm text-center">Syndicate Participation</p>
                             <div class="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-xl flex items-center justify-center">
                                 <svg class="w-12 h-12 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
@@ -824,12 +826,30 @@
                             </div>
                         </div>
 
-                        <div class="relative">
-                            <div class="w-20 h-20 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-                                <span class="text-4xl">??</span>
+                        <!-- Pathway C - Modern Star/Target Icon -->
+                        <div class="relative group/pathway">
+                            <div class="relative w-24 h-24 mx-auto mb-6 transform transition-all duration-500 group-hover/pathway:scale-110 group-hover/pathway:rotate-3">
+                                <!-- Gradient Background with Glow -->
+                                <div class="absolute inset-0 bg-gradient-to-br from-purple-400 via-pink-500 to-rose-600 rounded-3xl shadow-2xl shadow-purple-500/50 group-hover/pathway:shadow-purple-500/80 transition-all duration-500"></div>
+                                <div class="absolute inset-0 bg-gradient-to-br from-purple-400 via-pink-500 to-rose-600 rounded-3xl blur-xl opacity-50 group-hover/pathway:opacity-75 transition-opacity duration-500"></div>
+                                
+                                <!-- Icon Container -->
+                                <div class="relative w-full h-full flex items-center justify-center">
+                                    <!-- Target/Bullseye Icon -->
+                                    <svg class="w-12 h-12 text-white transform transition-transform duration-500 group-hover/pathway:scale-110 group-hover/pathway:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+                                    </svg>
+                                </div>
+                                
+                                <!-- Animated Ring -->
+                                <div class="absolute inset-0 rounded-3xl border-2 border-white/30 group-hover/pathway:scale-110 group-hover/pathway:border-white/50 transition-all duration-500"></div>
+                                
+                                <!-- Sparkle Effects -->
+                                <div class="absolute -top-1 -right-1 w-3 h-3 bg-yellow-300 rounded-full opacity-0 group-hover/pathway:opacity-100 group-hover/pathway:animate-ping"></div>
+                                <div class="absolute -bottom-1 -left-1 w-2 h-2 bg-rose-300 rounded-full opacity-0 group-hover/pathway:opacity-100 group-hover/pathway:animate-ping" style="animation-delay: 0.2s;"></div>
                             </div>
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">Pathway C</h3>
-                            <p class="text-gray-500 text-sm">Strategic Association</p>
+                            <h3 class="text-xl font-bold text-gray-900 mb-2 text-center">Pathway C</h3>
+                            <p class="text-gray-500 text-sm text-center">Strategic Association</p>
                             <div class="absolute inset-0 bg-white/80 backdrop-blur-sm rounded-xl flex items-center justify-center">
                                 <svg class="w-12 h-12 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
@@ -1523,7 +1543,7 @@
                     <a href="#syndicates" class="text-sm text-white/60 hover:text-accent transition-colors">Syndicates</a>
                     <a href="#process" class="text-sm text-white/60 hover:text-accent transition-colors">Process</a>
                     <a href="#disclaimers" class="text-sm text-white/60 hover:text-accent transition-colors">Important Info</a>
-                    <a href="{{ url('admin/login') }}" class="text-sm text-white/60 hover:text-accent transition-colors">Admin</a>
+                    <a href="{{ url('/admin/login') }}" class="text-sm text-white/60 hover:text-accent transition-colors">Admin Login</a>
                 </nav>
             </div>
             

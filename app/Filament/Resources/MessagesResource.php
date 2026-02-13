@@ -173,4 +173,12 @@ class MessagesResource extends Resource
     {
         return 'warning';
     }
+
+    /**
+     * Allow all authenticated users to access this resource
+     */
+    public static function canAccess(): bool
+    {
+        return true;
+    }
 }

@@ -24,4 +24,12 @@ class StatementOfComprehensiveIncome extends Page
         $service = new StatementService();
         $this->statement = $service->generate();
     }
+
+    /**
+     * Allow all authenticated users to access this page
+     */
+    public static function canAccess(): bool
+    {
+        return true;
+    }
 }

@@ -24,4 +24,12 @@ class CashFlowStatement extends Page
         $service = new CashFlowService();
         $this->statement = $service->generate();
     }
+
+    /**
+     * Allow all authenticated users to access this page
+     */
+    public static function canAccess(): bool
+    {
+        return true;
+    }
 }

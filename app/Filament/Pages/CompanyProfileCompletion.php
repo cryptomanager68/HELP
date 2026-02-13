@@ -97,4 +97,12 @@ class CompanyProfileCompletion extends Page implements HasForms
             ->success()
             ->send();
     }
+
+    /**
+     * Allow all authenticated users to access this page
+     */
+    public static function canAccess(): bool
+    {
+        return true;
+    }
 }

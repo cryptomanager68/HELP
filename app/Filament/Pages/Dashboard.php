@@ -1,6 +1,8 @@
 <?php
 
-namespace Filament\Pages;
+namespace App\Filament\Pages;
+
+use Filament\Pages\Dashboard as BaseDashboard;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Form;
 use Filament\Facades\Filament;
@@ -15,7 +17,7 @@ use Filament\Pages\Dashboard\Concerns\HasFiltersAction;
 use BezhanSalleh\FilamentShield\Traits\HasPageShield;
 use App\Models\Branches;
 
-class Dashboard extends Page
+class Dashboard extends BaseDashboard
 {
     //use HasPageShield;
     protected static string $routePath = '/';
@@ -92,5 +94,13 @@ class Dashboard extends Page
     public function getTitle(): string | Htmlable
     {
         return 'Homeowners Equity & Liquidity Plan - Admin Dashboard';
+    }
+
+    /**
+     * Allow all authenticated users to access the dashboard
+     */
+    public static function canAccess(): bool
+    {
+        return true;
     }
 }

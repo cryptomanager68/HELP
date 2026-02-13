@@ -31,7 +31,8 @@ class User extends Authenticatable implements Wallet,HasMedia
     use TwoFactorAuthenticatable;
     use HasWallet, HasWallets;
     use HasRoles;
-    use HasPanelShield;
+    // HasPanelShield disabled - not using Filament Shield
+    // use HasPanelShield;
     use LogsActivity;
     use InteractsWithMedia;
     use Billable;
@@ -111,7 +112,22 @@ protected static function booted(): void
     {
         static::addGlobalScope('org', function (Builder $query) {
             if (auth()->hasUser()) {
-                $query->where('organization_id', auth()->user()->organization_id)
+                $user = auth()->user();
+                
+                // Skip organization scope for super_admin users
+                // Use direct role check to avoid circular scope issues
+                $isSuperAdmin = \DB::table('model_has_roles')
+                    ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+                    ->where('model_has_roles.model_id', $user->id)
+                    ->where('model_has_roles.model_type', 'App\\Models\\User')
+                    ->where('roles.name', 'super_admin')
+                    ->exists();
+                
+                if ($isSuperAdmin) {
+                    return;
+                }
+                
+                $query->where('organization_id', $user->organization_id)
                // ->where('branch_id', auth()->user()->branch_id)
                 ->orWhere('organization_id',"=",NULL);
 
@@ -146,6 +162,15 @@ protected static function booted(): void
     public function isProfileIncomplete(): bool
     {
         return $this->profile_completeness < 100;
+    }
+
+    /**
+     * Allow all authenticated users to access Filament panels
+     */
+    public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+        // Allow all authenticated users to access admin panel
+        return true;
     }
 
 }

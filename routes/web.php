@@ -19,17 +19,29 @@ Route::get('/property-owner-gateway', [EOIController::class, 'propertyOwnerGatew
 Route::post('/eoi/submit', [EOIController::class, 'submit'])->name('eoi.submit');
 
 // Subscription Routes
-Route::get('/subscription/required', [SubscriptionController::class, 'required'])->name('subscription.required');
-Route::get('/subscription/checkout', [SubscriptionController::class, 'showCheckout'])->name('subscription.checkout');
-Route::post('/subscription/checkout', [SubscriptionController::class, 'checkout'])->name('subscription.checkout.process');
-Route::get('/subscription/success', [SubscriptionController::class, 'success'])->name('subscription.success');
+Route::get('/subscription/required', [SubscriptionController::class, 'required'])->name('subscription.required')->middleware('prevent.back');
+Route::get('/subscription/checkout', [SubscriptionController::class, 'showCheckout'])->name('subscription.checkout')->middleware('prevent.back');
+Route::post('/subscription/checkout', [SubscriptionController::class, 'checkout'])->name('subscription.checkout.process')->middleware('prevent.back');
+Route::get('/subscription/success', [SubscriptionController::class, 'success'])->name('subscription.success')->middleware('prevent.back');
 
 // LVR Submission Routes (after payment)
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'prevent.back'])->group(function () {
     Route::get('/subscription/lvr-form', [SubscriptionController::class, 'showLvrForm'])->name('subscription.lvr.form');
     Route::post('/subscription/lvr-submit', [SubscriptionController::class, 'submitLvr'])->name('subscription.lvr.submit');
-    Route::get('/subscription/complete', [SubscriptionController::class, 'successComplete'])->name('subscription.success.complete');
+    
+    // Email Verification Routes
+    Route::get('/subscription/verify-email', [SubscriptionController::class, 'showVerifyEmail'])->name('subscription.verify.email');
+    Route::post('/subscription/send-verification', [SubscriptionController::class, 'sendVerificationEmail'])->name('subscription.send.verification');
 });
+
+// Email Verification Handler (no auth required - uses signed URL)
+Route::get('/email/verify/{id}/{hash}', [SubscriptionController::class, 'verifyEmail'])
+    ->middleware(['signed'])
+    ->name('verification.verify');
+
+// Success page (no auth required since user is logged out)
+Route::get('/subscription/complete', [SubscriptionController::class, 'successComplete'])->name('subscription.success.complete');
+Route::post('/subscription/resend-password', [SubscriptionController::class, 'resendPasswordGuest'])->name('subscription.resend-password');
 
 // Stripe Webhook
 Route::post('/stripe/webhook', [SubscriptionController::class, 'webhook'])->name('cashier.webhook');
@@ -97,3 +109,6 @@ Route::middleware([
     Route::get('/payslip/{payslip}/download', [PayslipController::class, 'download'])->name('payslip.download');
 });
 
+
+// Debug route
+require __DIR__.'/debug.php';

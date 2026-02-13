@@ -41,6 +41,18 @@ class FortifyServiceProvider extends ServiceProvider
             $user = User::where('email', $request->email)->first();
 
             if ($user && Hash::check($request->password, $user->password)) {
+                // Skip subscription checks for super_admin users
+                $isSuperAdmin = \DB::table('model_has_roles')
+                    ->join('roles', 'model_has_roles.role_id', '=', 'roles.id')
+                    ->where('model_has_roles.model_id', $user->id)
+                    ->where('model_has_roles.model_type', 'App\\Models\\User')
+                    ->where('roles.name', 'super_admin')
+                    ->exists();
+                
+                if ($isSuperAdmin) {
+                    return $user;
+                }
+                
                 // Check if user has an active subscription
                 if (!$user->subscribed('default')) {
                     throw ValidationException::withMessages([

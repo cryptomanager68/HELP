@@ -21,7 +21,7 @@ return [
     ],
 
     'super_admin' => [
-        'enabled' => true,
+        'enabled' => false,  // Disabled to prevent authorization checks
         'name' => 'super_admin',
         'define_via_gate' => false,
         'intercept_gate' => 'before', // after

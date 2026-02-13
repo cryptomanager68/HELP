@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Submit Your LVR - HELP</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -16,11 +17,47 @@
                 }
             }
         }
+        
+        // Auto-refresh CSRF token every 5 minutes to prevent 419 errors
+        setInterval(function() {
+            fetch('/subscription/lvr-form')
+                .then(response => response.text())
+                .then(html => {
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const newToken = doc.querySelector('input[name="_token"]');
+                    if (newToken) {
+                        document.querySelector('input[name="_token"]').value = newToken.value;
+                    }
+                })
+                .catch(err => console.log('Token refresh failed:', err));
+        }, 300000); // 5 minutes
     </script>
 </head>
 <body class="antialiased bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
     <div class="min-h-screen flex items-center justify-center px-4 py-12">
         <div class="max-w-3xl w-full">
+            
+            {{-- Error Message --}}
+            @if($errors->any() || session('error'))
+            <div class="bg-red-500/20 border-2 border-red-400 rounded-2xl p-6 mb-6">
+                <div class="flex items-start gap-3">
+                    <svg class="w-6 h-6 text-red-400 flex-shrink-0 mt-1" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+                    </svg>
+                    <div>
+                        <h3 class="text-lg font-bold text-red-300 mb-2">Error</h3>
+                        @if(session('error'))
+                            <p class="text-red-200">{{ session('error') }}</p>
+                        @endif
+                        @foreach($errors->all() as $error)
+                            <p class="text-red-200">{{ $error }}</p>
+                        @endforeach
+                        <p class="text-red-200 mt-2 text-sm">If you see a "Page Expired" error, please refresh this page and try again.</p>
+                    </div>
+                </div>
+            </div>
+            @endif
             
             {{-- Success Message --}}
             @if(session('success'))
